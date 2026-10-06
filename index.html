@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reza Fashion House</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #fff9f5;
+      color: #241b2f;
+    }
+
+    /* NAVBAR */
+    header {
+      background: #fff;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0,0,0,.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      color: #e63976;
+    }
+
+    .logo span {
+      color: #7137d9;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: .3s;
+    }
+
+    nav a:hover {
+      color: #e63976;
+    }
+
+    .nav-btn {
+      background: linear-gradient(135deg, #e63976, #7137d9);
+      color: white;
+      padding: 11px 20px;
+      border-radius: 30px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 70px 7%;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 20%, #ffd3e2 0 12%, transparent 30%),
+        radial-gradient(circle at 10% 80%, #d8c6ff 0 12%, transparent 28%),
+        linear-gradient(135deg, #fff4f8, #fff8ed);
+    }
+
+    .hero-content {
+      width: 55%;
+      z-index: 2;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffe0ec;
+      color: #d92867;
+      padding: 9px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #e63976;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 600px;
+      color: #665c68;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 15px 28px;
+      border-radius: 35px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(135deg, #e63976, #7137d9);
+      box-shadow: 0 10px 25px rgba(230,57,118,.25);
+    }
+
+    .secondary {
+      color: #7137d9;
+      border: 2px solid #7137d9;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .hero-art {
+      position: absolute;
+      right: 7%;
+      width: 390px;
+      height: 500px;
+      background: linear-gradient(160deg, #ff5f9e, #7b42df);
+      border-radius: 220px 220px 35px 35px;
+      transform: rotate(7deg);
+      box-shadow: 25px 25px 70px rgba(91,43,150,.25);
+    }
+
+    .hero-art::before {
+      content: "RFH";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.9);
+      font-size: 80px;
+      font-weight: 900;
+      transform: rotate(-7deg);
+    }
+
+    /* SECTION */
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .category {
+      min-height: 250px;
+      border-radius: 25px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: white;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .category:hover {
+      transform: translateY(-10px);
+    }
+
+    .category h3 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .category p {
+      opacity: .9;
+    }
+
+    .cat1 {
+      background: linear-gradient(135deg, #ff4f87, #ff8a5b);
+    }
+
+    .cat2 {
+      background: linear-gradient(135deg, #6844e8, #b23be2);
+    }
+
+    .cat3 {
+      background: linear-gradient(135deg, #00a99d, #54d66a);
+    }
+
+    .cat4 {
+      background: linear-gradient(135deg, #ff9d00, #ff4f5a);
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,.07);
+      transition: .3s;
+    }
+
+    .product:hover {
+      transform: translateY(-8px);
+    }
+
+    .product-image {
+      height: 280px;
+      display: grid;
+      place-items: center;
+      font-size: 65px;
+      color: white;
+    }
+
+    .p1 { background: linear-gradient(135deg,#ff5f9e,#ff9966); }
+    .p2 { background: linear-gradient(135deg,#7048e8,#a855f7); }
+    .p3 { background: linear-gradient(135deg,#00a99d,#43d17a); }
+    .p4 { background: linear-gradient(135deg,#ffb000,#ff5c5c); }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #e63976;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .stars {
+      color: #ffb000;
+      margin: 8px 0;
+    }
+
+    /* PROMO */
+    .promo {
+      margin: 30px 7% 90px;
+      border-radius: 35px;
+      padding: 65px;
+      color: white;
+      background:
+        radial-gradient(circle at 90% 20%, #ff9e45, transparent 25%),
+        linear-gradient(120deg, #e63976, #7137d9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .promo h2 {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .promo p {
+      opacity: .9;
+      font-size: 17px;
+    }
+
+    .promo .btn {
+      background: white;
+      color: #e63976;
+      white-space: nowrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #20152b;
+      color: white;
+      padding: 60px 7% 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 18px;
+    }
+
+    footer p,
+    footer a {
+      color: #c9c0d0;
+      line-height: 2;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #ff6b9f;
+    }
+
+    .copyright {
+      border-top: 1px solid #40334a;
+      padding-top: 22px;
+      text-align: center;
+      color: #aaa;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero-art {
+        opacity: .2;
+        right: -100px;
+      }
+
+      .categories,
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 18px 5%;
+      }
+
+      section {
+        padding: 65px 5%;
+      }
+
+      .hero {
+        padding: 60px 5%;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+      }
+
+      .categories,
+      .products,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .promo {
+        margin: 20px 5% 65px;
+        padding: 40px 25px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .promo h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Reza <span>Fashion</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#collections">Collections</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#shop" class="nav-btn">Shop Now</a>
+  </header>
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="tag">NEW SEASON 2026</span>
+
+        <h1>
+          Wear Your<br>
+          <span>Confidence.</span>
+        </h1>
+
+        <p>
+          Discover bold colors, modern silhouettes, and unforgettable
+          styles at Reza Fashion House. Fashion designed to make you
+          stand out.
+        </p>
+
+        <div class="buttons">
+          <a href="#shop" class="btn primary">Explore Collection →</a>
+          <a href="#collections" class="btn secondary">View Categories</a>
+        </div>
+      </div>
+
+      <div class="hero-art"></div>
+    </section>
+
+    <section id="collections">
+      <div class="section-title">
+        <h2>Shop By Style</h2>
+        <p>Find the perfect look for every occasion.</p>
+      </div>
+
+      <div class="categories">
+        <div class="category cat1">
+          <h3>Women's Wear</h3>
+          <p>Elegant & expressive</p>
+        </div>
+
+        <div class="category cat2">
+          <h3>Men's Wear</h3>
+          <p>Sharp & confident</p>
+        </div>
+
+        <div class="category cat3">
+          <h3>Street Style</h3>
+          <p>Bold & effortless</p>
+        </div>
+
+        <div class="category cat4">
+          <h3>Accessories</h3>
+          <p>Complete your look</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="section-title">
+        <h2>Trending Now</h2>
+        <p>Our most-loved looks of the season.</p>
+      </div>
+
+      <div class="products">
+
+        <div class="product">
+          <div class="product-image p1">👗</div>
+          <div class="product-info">
+            <h3>Floral Summer Dress</h3>
+            <div class="stars">★★★★★</div>
+            <div class="price">$79.00</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image p2">🧥</div>
+          <div class="product-info">
+            <h3>Urban Purple Jacket</h3>
+            <div class="stars">★★★★★</div>
+            <div class="price">$119.00</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image p3">👕</div>
+          <div class="product-info">
+            <h3>Fresh Green Tee</h3>
+            <div class="stars">★★★★☆</div>
+            <div class="price">$39.00</div>
+          </div>
+        </div>
+
+        <div class="product">
+          <div class="product-image p4">👜</div>
+          <div class="product-info">
+            <h3>Sunset Mini Bag</h3>
+            <div class="stars">★★★★★</div>
+            <div class="price">$59.00</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="promo">
+      <div>
+        <h2>Fashion Week Sale</h2>
+        <p>Get up to 40% off selected styles. Limited time only.</p>
+      </div>
+
+      <a href="#shop" class="btn">Shop The Sale →</a>
+    </div>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>Why Reza Fashion House?</h2>
+        <p>Where creativity meets confidence.</p>
+      </div>
+
+      <div class="categories">
+        <div class="category cat2">
+          <h3>Premium Quality</h3>
+          <p>Beautiful materials and carefully crafted designs.</p>
+        </div>
+
+        <div class="category cat1">
+          <h3>Unique Designs</h3>
+          <p>Standout pieces created for your individual style.</p>
+        </div>
+
+        <div class="category cat3">
+          <h3>Made With Love</h3>
+          <p>Every collection is designed with passion.</p>
+        </div>
+
+        <div class="category cat4">
+          <h3>Express Yourself</h3>
+          <p>Your style. Your colors. Your statement.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="footer-grid">
+
+      <div>
+        <h3 class="logo">Reza <span>Fashion</span></h3>
+        <p>
+          Colorful fashion for people who aren't afraid
+          to express themselves.
+        </p>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <p><a href="#home">Home</a></p>
+        <p><a href="#collections">Collections</a></p>
+        <p><a href="#shop">Shop</a></p>
+      </div>
+
+      <div>
+        <h3>Help</h3>
+        <p><a href="#">Shipping</a></p>
+        <p><a href="#">Returns</a></p>
+        <p><a href="#">FAQ</a></p>
+      </div>
+
+      <div>
+        <h3>Follow Us</h3>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="#">Pinterest</a></p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Reza Fashion House. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
